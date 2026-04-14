@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saurav Abhisek Mishra – PM Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #0d0d0d;
+    --muted: #555;
+    --faint: #999;
+    --bg: #f7f5f0;
+    --white: #ffffff;
+    --accent: #1a3a2a;
+    --accent2: #e8f5ee;
+    --accent3: #c8ecd8;
+    --border: #d8d4cc;
+    --tag-bg: #eef9f3;
+    --tag-text: #1a5c38;
+    --highlight: #2d6a4f;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--ink); font-size: 15px; line-height: 1.65; overflow-x: hidden; }
+  h1,h2,h3,h4,h5 { font-family: 'Syne', sans-serif; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(247,245,240,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 58px; }
+  .nav-brand { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; letter-spacing: -0.01em; color: var(--accent); }
+  .nav-links { display: flex; gap: 1.8rem; }
+  .nav-links a { text-decoration: none; color: var(--muted); font-size: 13px; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero { min-height: 92vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 4rem; padding: 5rem 4rem; max-width: 1200px; margin: 0 auto; }
+  .hero-left { }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--accent2); border: 1px solid var(--accent3); color: var(--highlight); font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 20px; margin-bottom: 1.5rem; letter-spacing: 0.04em; }
+  .hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--highlight); display: inline-block; }
+  .hero h1 { font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 1.2rem; }
+  .hero h1 em { font-style: normal; color: var(--highlight); }
+  .hero-tagline { font-size: 1.05rem; color: var(--muted); max-width: 440px; line-height: 1.7; margin-bottom: 2rem; font-weight: 300; }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: #fff; font-family: 'Syne', sans-serif; font-weight: 600; font-size: 13px; padding: 12px 22px; border-radius: 8px; text-decoration: none; letter-spacing: 0.02em; transition: opacity 0.2s; cursor: pointer; border: none; }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-outline { display: inline-flex; align-items: center; gap: 6px; background: transparent; color: var(--accent); font-family: 'Syne', sans-serif; font-weight: 600; font-size: 13px; padding: 12px 22px; border-radius: 8px; border: 1.5px solid var(--accent); text-decoration: none; letter-spacing: 0.02em; transition: background 0.2s; cursor: pointer; }
+  .btn-outline:hover { background: var(--accent2); }
+  .hero-right { position: relative; }
+  .hero-card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; box-shadow: 0 2px 30px rgba(0,0,0,0.06); }
+  .profile-ring { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #2d6a4f, #52b788); display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: #fff; margin-bottom: 1rem; }
+  .hero-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 2px; }
+  .hero-card .role { font-size: 13px; color: var(--highlight); font-weight: 500; margin-bottom: 1rem; }
+  .stat-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 1.2rem; }
+  .stat-box { background: var(--bg); border-radius: 10px; padding: 12px; text-align: center; }
+  .stat-num { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--accent); display: block; }
+  .stat-label { font-size: 11px; color: var(--faint); display: block; margin-top: 2px; }
+  .expertise-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
+  .etag { font-size: 11px; background: var(--tag-bg); color: var(--tag-text); padding: 4px 10px; border-radius: 20px; font-weight: 500; }
+
+  /* SECTION COMMON */
+  section { padding: 5rem 0; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+  .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: var(--highlight); text-transform: uppercase; margin-bottom: 0.6rem; }
+  .section-title { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 3rem; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: start; }
+  .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 1rem; }
+  .about-text strong { color: var(--ink); }
+  .about-highlights { display: flex; flex-direction: column; gap: 1rem; }
+  .highlight-item { background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--highlight); border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; }
+  .highlight-item h4 { font-size: 0.85rem; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .highlight-item p { font-size: 0.8rem; color: var(--muted); }
+
+  /* EXPERIENCE */
+  .exp-grid { display: flex; flex-direction: column; gap: 1.5rem; }
+  .exp-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem 1.8rem; display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: start; }
+  .exp-dot { width: 42px; height: 42px; border-radius: 10px; background: var(--accent2); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+  .exp-meta { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
+  .exp-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; }
+  .exp-period { font-size: 12px; color: var(--faint); }
+  .exp-company { font-size: 13px; color: var(--highlight); font-weight: 500; margin-bottom: 0.7rem; }
+  .exp-points { list-style: none; padding: 0; }
+  .exp-points li { font-size: 13.5px; color: var(--muted); padding: 3px 0 3px 14px; position: relative; }
+  .exp-points li::before { content: '—'; position: absolute; left: 0; color: var(--accent3); }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .project-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
+  .project-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.09); }
+  .project-card.featured { border: 1.5px solid var(--highlight); }
+  .featured-badge { position: absolute; top: 14px; right: 14px; background: var(--accent); color: #fff; font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.05em; }
+  .project-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .project-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; line-height: 1.3; }
+  .project-card p { font-size: 13px; color: var(--muted); margin-bottom: 1rem; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .ptag { font-size: 11px; background: var(--bg); color: var(--muted); padding: 3px 9px; border-radius: 20px; border: 1px solid var(--border); }
+
+  /* SKILLS */
+  .skills-wrapper { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .skill-group { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem; }
+  .skill-group-title { font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--highlight); margin-bottom: 1rem; display: flex; align-items: center; gap: 7px; }
+  .skill-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-chip { font-size: 12px; background: var(--bg); color: var(--ink); padding: 5px 11px; border-radius: 8px; border: 1px solid var(--border); font-weight: 400; }
+
+  /* CERTS */
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+  .cert-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; display: flex; align-items: center; gap: 12px; }
+  .cert-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--accent2); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+  .cert-name { font-size: 13px; font-weight: 500; line-height: 1.3; }
+  .cert-org { font-size: 11.5px; color: var(--highlight); margin-top: 2px; }
+
+  /* CONTACT */
+  .contact-section { background: var(--accent); color: #fff; border-radius: 24px; padding: 4rem; text-align: center; margin: 0 2.5rem 5rem; }
+  .contact-section h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 800; margin-bottom: 1rem; color: #fff; }
+  .contact-section p { color: rgba(255,255,255,0.7); max-width: 500px; margin: 0 auto 2rem; }
+  .contact-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .contact-link { display: inline-flex; align-items: center; gap: 7px; background: rgba(255,255,255,0.12); color: #fff; padding: 11px 20px; border-radius: 10px; text-decoration: none; font-size: 13.5px; font-weight: 500; border: 1px solid rgba(255,255,255,0.2); transition: background 0.2s; }
+  .contact-link:hover { background: rgba(255,255,255,0.2); }
+
+  /* FOOTER */
+  footer { text-align: center; padding: 2rem; font-size: 12px; color: var(--faint); border-top: 1px solid var(--border); }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: var(--border); margin: 0 2.5rem; }
+
+  @media(max-width: 768px) {
+    .hero { grid-template-columns: 1fr; padding: 3rem 1.5rem; min-height: auto; }
+    .hero-right { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .skills-wrapper { grid-template-columns: 1fr 1fr; }
+    .contact-section { margin: 0 1rem 3rem; padding: 2.5rem 1.5rem; }
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1rem; }
+    .container { padding: 0 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">SAM ·</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-badge"><span></span> Open to PM Roles</div>
+    <h1>Engineering<br>Depth Meets<br><em>Product Thinking</em></h1>
+    <p class="hero-tagline">From designing defense drones to defining product strategies — I bring rare technical depth, user empathy, and AI-powered prototyping to build products that matter.</p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">View PM Projects ↓</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="profile-ring">SM</div>
+      <h3>Saurav Abhisek Mishra</h3>
+      <p class="role">Product Management Fellow · R&D Engineer</p>
+      <p style="font-size:13px; color:var(--muted);">Noida, Uttar Pradesh, India</p>
+      <div class="stat-row">
+        <div class="stat-box"><span class="stat-num">2+</span><span class="stat-label">Years Exp.</span></div>
+        <div class="stat-box"><span class="stat-num">6</span><span class="stat-label">PM Projects</span></div>
+        <div class="stat-box"><span class="stat-num">2</span><span class="stat-label">Live Apps</span></div>
+      </div>
+      <div class="expertise-tags">
+        <span class="etag">UAV Systems</span>
+        <span class="etag">Product Discovery</span>
+        <span class="etag">JTBD</span>
+        <span class="etag">AI Tools</span>
+        <span class="etag">PRDs</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <p class="section-label">About Me</p>
+    <h2 class="section-title">The Engineer Who Thinks Like a PM</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a <strong>Mechanical Design Engineer transitioning into Product Management</strong>, with 2+ years building mission-critical UAV systems for defense applications — including <strong>Operation Sindoor</strong> and the <strong>IDEX program</strong>.</p>
+        <p>My edge as a PM candidate is rare: I've lived on both sides of the build. I understand technical constraints, FEA trade-offs, and manufacturing workflows — but I also deeply care about <strong>user problems, discovery, and data-driven decisions</strong>.</p>
+        <p>Currently a <strong>Product Management Fellow at Product Space</strong>, I've been applying JTBD, opportunity solution trees, PRDs, and success metrics to real-world case studies — and building AI-powered apps from scratch using Lovable, Stitch, and n8n.</p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <h4>Defense-grade precision</h4>
+          <p>Designed drones deployed in Operation Sindoor. Structural integrity and reliability aren't just words to me.</p>
+        </div>
+        <div class="highlight-item">
+          <h4>AI-native product builder</h4>
+          <p>Built two full prototype apps from scratch using Lovable, Stitch & n8n — shipped, not just ideated.</p>
+        </div>
+        <div class="highlight-item">
+          <h4>Systems thinker</h4>
+          <p>From CAD-CAE-CAM pipelines to Opportunity Solution Trees — I see products as interconnected systems.</p>
+        </div>
+        <div class="highlight-item">
+          <h4>Research-first mindset</h4>
+          <p>Every product decision starts with user research, JTBD interviews, and data — not assumptions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <p class="section-label">Experience</p>
+    <h2 class="section-title">Where I've Built Things</h2>
+    <div class="exp-grid">
+
+      <div class="exp-card">
+        <div class="exp-dot">🚁</div>
+        <div>
+          <div class="exp-meta">
+            <span class="exp-title">Mechanical Design Engineer</span>
+            <span class="exp-period">Jul 2024 – Present</span>
+          </div>
+          <div class="exp-company">EndureAir Systems Pvt. Ltd. · Noida, India</div>
+          <ul class="exp-points">
+            <li>Designed IP-rated enclosures for NVIDIA Jetson with integrated thermal management for harsh outdoor environments</li>
+            <li>Led gasoline-to-electric helicopter drone conversion, optimizing weight distribution and cooling systems</li>
+            <li>Developed vibration test setup with sensor instrumentation and DAQ systems for defense-standard qualification</li>
+            <li>Created CNC toolpaths and manufacturing drawings, bridging prototype to production</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-dot">📦</div>
+        <div>
+          <div class="exp-meta">
+            <span class="exp-title">Product Management Fellow</span>
+            <span class="exp-period">Dec 2024 – Present</span>
+          </div>
+          <div class="exp-company">Product Space · Remote</div>
+          <ul class="exp-points">
+            <li>Conducted product discovery using user research, JTBD framework, and Opportunity Solution Trees</li>
+            <li>Translated insights into user journeys, PRDs, and MVP-ready feature specifications</li>
+            <li>Defined success metrics, KPIs, and funnel analytics for data-driven decisions</li>
+            <li>Applied systems thinking and technical feasibility analysis for scalable solutions</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-dot">🛡️</div>
+        <div>
+          <div class="exp-meta">
+            <span class="exp-title">Associate Design Engineer</span>
+            <span class="exp-period">Feb 2024 – Jun 2024</span>
+          </div>
+          <div class="exp-company">IG Drones · Bhubaneswar, India</div>
+          <ul class="exp-points">
+            <li>Designed 7" & 10" FPV platforms deployed in Operation Sindoor for tactical agility</li>
+            <li>Led mechanical design of 80kg payload logistics drone with comprehensive FEA validation</li>
+            <li>Performed CFD analysis on fixed-wing UAVs to optimize lift-to-drag ratios</li>
+            <li>Designed modular, tool-less battery mounting systems for rapid field maintenance</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-dot">🎓</div>
+        <div>
+          <div class="exp-meta">
+            <span class="exp-title">CAD Engineer Trainee</span>
+            <span class="exp-period">Jun 2023 – Feb 2024</span>
+          </div>
+          <div class="exp-company">Skyy Skill Academy · Bhubaneswar, India</div>
+          <ul class="exp-points">
+            <li>Completed intensive training in advanced CAD modeling, engineering analysis, and manufacturing workflows</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label">PM Projects</p>
+    <h2 class="section-title">Products I've Thought Through & Built</h2>
+    <div class="projects-grid">
+
+      <div class="project-card featured">
+        <div class="featured-badge">⭐ FEATURED</div>
+        <div class="project-icon">💳</div>
+        <h3>LoanPulse – AI-Powered Loan Management App</h3>
+        <p>Built from scratch — conducted market research, JTBD interviews, and metric definition. Prototyped a full app using Lovable, Stitch & n8n to automate loan tracking workflows.</p>
+        <div class="project-tags">
+          <span class="ptag">Market Research</span>
+          <span class="ptag">JTBD</span>
+          <span class="ptag">Lovable</span>
+          <span class="ptag">Stitch</span>
+          <span class="ptag">n8n</span>
+          <span class="ptag">MVP</span>
+        </div>
+      </div>
+
+      <div class="project-card featured">
+        <div class="featured-badge">⭐ FEATURED</div>
+        <div class="project-icon">🛒</div>
+        <h3>Refillo – Intelligent Grocery Replenishment Platform</h3>
+        <p>End-to-end product: market research, JTBD framework, opportunity sizing & metrics. Prototyped using Lovable, Stitch & n8n to deliver smart, automated grocery replenishment.</p>
+        <div class="project-tags">
+          <span class="ptag">Product Discovery</span>
+          <span class="ptag">Opportunity Trees</span>
+          <span class="ptag">Lovable</span>
+          <span class="ptag">n8n</span>
+          <span class="ptag">Prototype App</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🚀</div>
+        <h3>Blinkit Product Strategy: Driving Retention & AOV Growth</h3>
+        <p>Analyzed Blinkit's retention funnel and identified high-impact levers to improve average order value and repeat purchase rates through feature strategy and metric frameworks.</p>
+        <div class="project-tags">
+          <span class="ptag">Retention Strategy</span>
+          <span class="ptag">AOV Optimization</span>
+          <span class="ptag">Funnel Analysis</span>
+          <span class="ptag">KPIs</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">💸</div>
+        <h3>Google Pay Expense Tracking Feature Analysis</h3>
+        <p>Evaluated the potential for an integrated expense tracking feature in Google Pay — user research synthesis, competitive benchmarking, PRD, and success metric definition.</p>
+        <div class="project-tags">
+          <span class="ptag">Feature Analysis</span>
+          <span class="ptag">PRD</span>
+          <span class="ptag">Competitive Research</span>
+          <span class="ptag">UX</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🔄</div>
+        <h3>Improving Refund & Retention Experience on Myntra</h3>
+        <p>Identified friction points in Myntra's post-purchase flow. Proposed redesigned refund journeys and retention nudges to reduce churn and boost NPS.</p>
+        <div class="project-tags">
+          <span class="ptag">User Journey</span>
+          <span class="ptag">Retention</span>
+          <span class="ptag">NPS</span>
+          <span class="ptag">Post-Purchase UX</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🚗</div>
+        <h3>UberX Ride-Sharing: Product Feature Analysis</h3>
+        <p>Deep-dived into UberX's ride-sharing feature set — analyzing adoption barriers, proposing improvements to driver-rider matching, and defining North Star metrics.</p>
+        <div class="project-tags">
+          <span class="ptag">Feature Analysis</span>
+          <span class="ptag">North Star Metric</span>
+          <span class="ptag">Matching Algorithm</span>
+          <span class="ptag">Growth</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label">Skills & Tools</p>
+    <h2 class="section-title">My PM Toolkit</h2>
+    <div class="skills-wrapper">
+
+      <div class="skill-group">
+        <div class="skill-group-title">📊 Analysis & Strategy</div>
+        <div class="skill-chips">
+          <span class="skill-chip">Product Discovery</span>
+          <span class="skill-chip">JTBD</span>
+          <span class="skill-chip">Opportunity Solution Trees</span>
+          <span class="skill-chip">Funnel Analysis</span>
+          <span class="skill-chip">A/B Testing</span>
+          <span class="skill-chip">Competitive Analysis</span>
+          <span class="skill-chip">Root Cause Analysis</span>
+          <span class="skill-chip">PRDs</span>
+          <span class="skill-chip">OKRs / KPIs</span>
+          <span class="skill-chip">North Star Metric</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">🖊️ Wireframe & UI/UX</div>
+        <div class="skill-chips">
+          <span class="skill-chip">Figma</span>
+          <span class="skill-chip">FigJam</span>
+          <span class="skill-chip">Balsamiq</span>
+          <span class="skill-chip">Miro</span>
+          <span class="skill-chip">Whimsical</span>
+          <span class="skill-chip">Maze</span>
+          <span class="skill-chip">User Journey Mapping</span>
+          <span class="skill-chip">Information Architecture</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">🤖 AI & Prototyping Tools</div>
+        <div class="skill-chips">
+          <span class="skill-chip">Lovable</span>
+          <span class="skill-chip">Stitch</span>
+          <span class="skill-chip">n8n (Chatbot Automation)</span>
+          <span class="skill-chip">Cursor</span>
+          <span class="skill-chip">Bolt.new</span>
+          <span class="skill-chip">v0 by Vercel</span>
+          <span class="skill-chip">ChatGPT</span>
+          <span class="skill-chip">Claude AI</span>
+          <span class="skill-chip">Gemini</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">📐 PM Frameworks</div>
+        <div class="skill-chips">
+          <span class="skill-chip">RICE Scoring</span>
+          <span class="skill-chip">MoSCoW</span>
+          <span class="skill-chip">HEART Framework</span>
+          <span class="skill-chip">AARRR Pirate Metrics</span>
+          <span class="skill-chip">ICE Scoring</span>
+          <span class="skill-chip">Kano Model</span>
+          <span class="skill-chip">Jobs-to-be-Done</span>
+          <span class="skill-chip">MVP Definition</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">⚙️ Engineering (Core)</div>
+        <div class="skill-chips">
+          <span class="skill-chip">SolidWorks</span>
+          <span class="skill-chip">ANSYS FEA/CFD</span>
+          <span class="skill-chip">ArtCAM Pro</span>
+          <span class="skill-chip">Blender</span>
+          <span class="skill-chip">CNC Programming</span>
+          <span class="skill-chip">Thermal Management</span>
+          <span class="skill-chip">UAV/Drone Systems</span>
+          <span class="skill-chip">Rapid Prototyping</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">🗂️ Collaboration & PM Ops</div>
+        <div class="skill-chips">
+          <span class="skill-chip">Jira</span>
+          <span class="skill-chip">Notion</span>
+          <span class="skill-chip">Confluence</span>
+          <span class="skill-chip">Linear</span>
+          <span class="skill-chip">Slack</span>
+          <span class="skill-chip">Trello</span>
+          <span class="skill-chip">Google Analytics</span>
+          <span class="skill-chip">Mixpanel</span>
+          <span class="skill-chip">Amplitude</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="container">
+    <p class="section-label">Certifications</p>
+    <h2 class="section-title">Credentials & Training</h2>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-icon">🎓</div>
+        <div>
+          <div class="cert-name">AI Product Management Fellowship</div>
+          <div class="cert-org">Product Space</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🚗</div>
+        <div>
+          <div class="cert-name">Automotive Skill Development</div>
+          <div class="cert-org">Automotive Skill Development Council</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🔍</div>
+        <div>
+          <div class="cert-name">Google Certifications</div>
+          <div class="cert-org">Google</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">📦</div>
+        <div>
+          <div class="cert-name">Supply Chain Management</div>
+          <div class="cert-org">Udemy</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🎓</div>
+        <div>
+          <div class="cert-name">B.Tech – Electrical Engineering</div>
+          <div class="cert-org">NIST, Bhubaneswar (NBA & NAAC Accredited)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <h2>Let's Build Something Together</h2>
+  <p>I'm actively looking for PM roles where I can bring my unique engineering background and product thinking. Let's connect.</p>
+  <div class="contact-links">
+    <a class="contact-link" href="mailto:sauravmishra0317@gmail.com">✉ sauravmishra0317@gmail.com</a>
+    <a class="contact-link" href="https://linkedin.com/in/sauravabhisekmishra" target="_blank">🔗 LinkedIn</a>
+    <a class="contact-link" href="https://sauravmishra01.github.io/Saurav Portfolio" target="_blank">🌐 Portfolio Site</a>
+  </div>
+</div>
+
+<footer>
+  © 2025 Saurav Abhisek Mishra · Built with intention for PM interviews
+</footer>
+
+</body>
+</html>
